@@ -14,7 +14,6 @@ services:
     - "2181:2181"
 
     environment:
-
       ZOOKEEPER_CLIENT_PORT: "2181"
 
  
