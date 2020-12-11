@@ -1,6 +1,5 @@
-# This is new modified code, no longer the example reference.
-version: '3.7'
 
+version: '3.7'
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:5.5.1
@@ -9,7 +8,7 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: "2181"
 
-# Something is wrong in here, but I can't figure out what.
+# This is the working kafka now. Note, if it tries not to work, wait a bit and it should do it.
   kafka:
     image: confluentinc/cp-kafka:5.5.1
     ports:
@@ -23,12 +22,10 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
     depends_on:
     - "zookeeper"
-
   redis:
     image: redis:6.0.6
     ports:
     - "6379:6379"
-
   stedi:
     image: scmurdock/stedi
     ports:
@@ -37,7 +34,7 @@ services:
       REDIS_HOST: "redis"
       REDIS_PORT: "6379"
       REDIS_DB: "0"
-      KAFKA_BROKER: "kaffy:9092"
+      KAFKA_BROKER: "kafka:9092"
       KAFKA_RISK_TOPIC: "customer-risk-topic"
     depends_on:
     - "redis"
