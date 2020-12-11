@@ -1,4 +1,4 @@
-# This is new modified code, no longer the example reference.
+
 version: '3.7'
 services:
   zookeeper:
@@ -7,7 +7,8 @@ services:
     - "2181:2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: "2181"
-# Note: When running tests, Kafka may claim it's not working. Wait a bit and try again.
+
+# This is the working kafka now. Note, if it tries not to work, wait a bit and it should do it.
   kafka:
     image: confluentinc/cp-kafka:5.5.1
     ports:
