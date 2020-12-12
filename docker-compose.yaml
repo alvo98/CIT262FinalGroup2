@@ -1,6 +1,8 @@
 version: '3.7'
 
 services:
+
+#Zookeeper shouldn't need to be too different from the example. In fact, it should proabably stay the same.
   zookeeper:
     image: confluentinc/cp-zookeeper:5.5.1
     ports:
@@ -23,11 +25,13 @@ services:
     depends_on:
     - "zookeeper"
 
+#Redis is functioning properly last I tested.
   redis:
     image: redis:6.0.6
     ports:
     - "6379:6379"
 
+# Stedi can be found by clicking the web preview button and going to port 4567.
   stedi:
     image: scmurdock/stedi
     ports:
